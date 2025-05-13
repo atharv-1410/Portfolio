@@ -8,68 +8,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         /* Animated Background for Hero Section */
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
 
-@keyframes float {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(-40px) scale(1.1);
-        opacity: 0.9;
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
-}
+            50% {
+                background-position: 100% 50%;
+            }
 
-#hero {
-    background: linear-gradient(-45deg, #2563eb, #7c3aed, #06b6d4, #2563eb);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    position: relative;
-    overflow: hidden;
-}
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-/* Floating bubble shapes */
-#hero::after,
-#hero::before {
-    content: '';
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-}
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
 
-#hero::before {
-    top: 10%;
-    left: 20%;
-    animation-delay: 1s;
-}
+            50% {
+                transform: translateY(-40px) scale(1.1);
+                opacity: 0.9;
+            }
 
-#hero::after {
-    bottom: 10%;
-    right: 15%;
-    animation-delay: 2.5s;
-}
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+        }
 
-        
+        #hero {
+            background: linear-gradient(-45deg, #2563eb, #7c3aed, #06b6d4, #2563eb);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating bubble shapes */
+        #hero::after,
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #hero::before {
+            top: 10%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        #hero::after {
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 2.5s;
+        }
+
+
         /* CSS Reset & Global Styles */
         /* Certificates Section */
         .certificates-container {
@@ -117,7 +121,8 @@
         }
 
         .certificate-info .btn-outline {
-            color: #4361ee;;
+            color: #4361ee;
+            ;
             padding: 0.5rem 1rem;
             font-size: 0.9rem;
         }
@@ -448,6 +453,78 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
+        }
+
+        .project-reference {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+            padding-left: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .project-reference strong {
+            color: #4a89dc;
+            font-weight: 600;
+        }
+
+        .progress-item {
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .progress-item:hover .project-reference {
+            color: #333;
+            transform: translateX(5px);
+        }
+
+        .skill-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: #4a89dc;
+            margin-bottom: 15px;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #4a89dc, #5ca9fb);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
         }
 
         .skill-box {
@@ -1069,7 +1146,7 @@
             }
 
             .nav-links.show {
-                left : 0;
+                left: 0;
             }
 
             .nav-links li {
@@ -1700,19 +1777,26 @@
                         <div class="progress-item">
                             <div class="progress-title">
                                 <span>HTML/CSS</span>
-                                <span>95%</span>
+                                <span>85%</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="95%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Project: <strong>Image Processing App, Visual Algo, Listify, Hotelopedia,
+                                        Stock Portfolio</strong></span>
                             </div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
                                 <span>JavaScript</span>
-                                <span>90%</span>
+                                <span>80%</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="90%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Project: <strong>Visual Algo, Stock Portfolio</strong></span>
                             </div>
                         </div>
                         <div class="progress-item">
@@ -1722,6 +1806,9 @@
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="65%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at JMedia Corporation</strong></span>
                             </div>
                         </div>
                     </div>
@@ -1736,19 +1823,25 @@
                         <div class="progress-item">
                             <div class="progress-title">
                                 <span>Flask</span>
-                                <span>85%</span>
+                                <span>80%</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="85%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Project: <strong>Image Processing App, Listify</strong></span>
                             </div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
                                 <span>Django</span>
-                                <span>80%</span>
+                                <span>70%</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="80%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at JMedia Corporation</strong></span>
                             </div>
                         </div>
                         <div class="progress-item">
@@ -1758,6 +1851,9 @@
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="75%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at JMedia Corporation</strong></span>
                             </div>
                         </div>
                     </div>
@@ -1778,6 +1874,9 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="80%"></div>
                             </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at Infinity Pool</strong></span>
+                            </div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
@@ -1786,6 +1885,9 @@
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="80%"></div>
+                            </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at infinity Pool</strong></span>
                             </div>
                         </div>
                         <div class="progress-item">
@@ -1796,6 +1898,9 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="75%"></div>
                             </div>
+                            <div class="project-reference">
+                                <span>Used in Project: <strong>Image Processing App</strong></span>
+                            </div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
@@ -1805,13 +1910,15 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="85%"></div>
                             </div>
+                            <div class="project-reference">
+                                <span>Used in Project: <strong>Image Processing App</strong></span>
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="skill-box">
                     <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-database"></i>
                     </div>
                     <h3 class="skill-title">Databases</h3>
                     <p>Designing and managing structured data using modern databases to ensure fast,
@@ -1825,6 +1932,9 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="85%"></div>
                             </div>
+                            <div class="project-reference">
+                                <span>Used in Internship: <strong>at JMedia Corporation</strong></span>
+                            </div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
@@ -1834,12 +1944,15 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="65%"></div>
                             </div>
+                            <div class="project-reference">
+                                <span>Used in Coursework: <strong>at PICT, Pune</strong></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="skill-box">
                     <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-cogs"></i>
                     </div>
                     <h3 class="skill-title">Tools & Others</h3>
                     <p>Utilizing various development tools and practices to optimize workflow and productivity.</p>
@@ -1852,6 +1965,7 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="90%"></div>
                             </div>
+
                         </div>
                         <div class="progress-item">
                             <div class="progress-title">
@@ -1861,11 +1975,10 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" data-width="80%"></div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1918,6 +2031,25 @@
                 <h2>Get In Touch</h2>
                 <p>Feel free to contact me for any inquiries or project discussions</p>
             </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <br>
+            <br>
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -1949,23 +2081,7 @@
                     </div>
 
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1985,7 +2101,7 @@
                             class="fab fa-instagram"></i></a>
                 </div>
                 <div class="footer-links">
-                
+
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
                     <a href="#education">Education</a>
@@ -2143,6 +2259,36 @@
                 const width = bar.getAttribute('data-width');
                 bar.style.width = width;
             });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBars = document.querySelectorAll('.progress-fill');
+
+            function animateProgressBars() {
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+            }
+
+            // Initial animation
+            animateProgressBars();
+
+            // Animation on scroll into view
+            const skillsSection = document.querySelector('#skills');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateProgressBars();
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
         });
     </script>
 </body>
