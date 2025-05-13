@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atharv Deshpande</title>
+    <title>Atharv Deshpande - Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         /* Animated Background for Hero Section */
@@ -1057,29 +1057,33 @@
             .nav-links {
                 position: fixed;
                 top: 70px;
-                left: 0;
+                left: -100%;
                 width: 100%;
+                height: auto;
                 background-color: #fff;
                 flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1.5rem;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
+                padding: 20px 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.4s ease;
                 z-index: 999;
             }
 
             .nav-links.show {
-                transform: translateY(0);
+                left : 0;
             }
 
             .nav-links li {
-                margin-left: 0;
+                margin: 0;
+                width: 100%;
+                text-align: center;
             }
 
             .mobile-menu-toggle {
                 display: block;
+                font-size: 28px;
+                padding: 8px;
+                min-width: 44px;
+                min-height: 44px;
             }
 
             .personal-info {
