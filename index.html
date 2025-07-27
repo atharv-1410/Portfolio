@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atharv Deshpande - Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         /* Animated Background for Hero Section */
@@ -1570,7 +1571,7 @@
                         <p>Pune Institute of Computer Technology (PICT)</p>
                         <p>Affiliated to Savitribai Phule Pune University</p>
                         <p>Pune, Maharashtra, India</p>
-                        <p class="highlight-badge">CGPA: 8.48/10</p>
+                        <p class="highlight-badge">CGPA: 8.58/10</p>
                     </div>
                 </div>
                 <div class="education-card">
@@ -2033,20 +2034,17 @@
             </div>
             <div class="contact-form">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    <div class="form-group"> <input type="text" class="form-control" id="name" placeholder="Your Name"
+                            required> </div>
+                    <div class="form-group"> <input type="email" class="form-control" id="email"
+                            placeholder="Your Email" required> </div>
+                    <div class="form-group"> <input type="text" class="form-control" id="subject" placeholder="Subject">
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-group"> <textarea class="form-control" id="message" placeholder="Your Message"
+                            required></textarea> </div> <button type="submit" id="submitButton"
+                        class="btn btn-primary">Send Message</button>
                 </form>
+                <div id="statusMessage" style="margin-top: 15px; font-weight: 500;"></div>
             </div>
             <br>
             <br>
@@ -2153,11 +2151,63 @@
         });
 
         // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Form submission logic would go here
-            alert('Thanks for your message! This form is not functional in this demo.');
-            this.reset();
+        document.addEventListener('DOMContentLoaded', function () {
+            emailjs.init('ecRnyg0lT_WhAPn1f');
+
+            const form = document.getElementById('contactForm');
+            const statusDiv = document.getElementById('statusMessage');
+            const submitButton = document.getElementById('submitButton');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    statusDiv.style.color = 'red';
+                    statusDiv.textContent = 'Please fill in all required fields.';
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    statusDiv.style.color = 'red';
+                    statusDiv.textContent = 'Please enter a valid email address.';
+                    return;
+                }
+
+                const templateParams = {
+                    from_name: name,
+                    reply_to: email,
+                    subject: subject || 'Contact Form Submission',
+                    message: message,
+                    to_email: 'atharvdeshpande92@gmail.com'
+                };
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                statusDiv.textContent = 'Sending your message...';
+                statusDiv.style.color = '#4361ee';
+
+                emailjs.send('service_yenxw5a', 'template_ofddkcr', templateParams)
+                    .then(function (response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        statusDiv.style.color = 'green';
+                        statusDiv.textContent = '✅ Your message has been sent successfully!';
+                        form.reset();
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                        statusDiv.style.color = 'red';
+                        statusDiv.textContent = '❌ Failed to send message. Please try again later.';
+                    })
+                    .finally(function () {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    });
+            });
         });
 
         // Back to top button
